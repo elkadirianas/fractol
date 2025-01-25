@@ -4,9 +4,20 @@ static void ERROR(){
     exit(1); 
 }
 
-void data_init(t_fractal *fractal){
+static void data_init(t_fractal *fractal){
     fractal->escape_value = 4 ; 
     fractal->iterations=42; 
+    fractal->shift_x=0.0; 
+    fractal->shift_y=0.0; 
+}
+
+static void event_init(t_fractal *fractal){
+    mlx_hook(fractal->mlx_window,KeyPress,0,
+                key_handle, fractal);
+   	// mlx_hook(fractal->mlx_window,ButtonPress,0,
+    //             mouse_handle, fractal);
+    // mlx_hook(fractal->mlx_window,DestroyNotify,0,
+    //             close_handle, fractal);
 }
 
 void fractal_init(t_fractal *fractal){
@@ -28,5 +39,6 @@ void fractal_init(t_fractal *fractal){
     }
     fractal->img.pixel=mlx_get_data_addr(fractal->img.img_ptr,&fractal->img.bits_per_pixel,
                                         &fractal->img.line_length,&fractal->img.endian); 
+    event_init(fractal); 
     data_init(fractal); 
 }

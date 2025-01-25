@@ -16,8 +16,8 @@ void handle_pixel(int x , int y , t_fractal *fractal){
     z.r=0.0; 
     z.i=0.0; 
 
-    c.r=scale(x, -2,2, 0 , W); 
-    c.i=scale(y,  2,-2, 0 , H);
+    c.r=scale(x, -2,2, 0 , W)+fractal->shift_x; 
+    c.i=scale(y,  2,-2, 0 , H)+fractal->shift_y;
     while(i<fractal->iterations){
         z=sum_complex(square_complex(z),c); 
         if(((z.r*z.r)+(z.i*z.i))>fractal->escape_value){

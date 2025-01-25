@@ -6,6 +6,20 @@
 #include "unistd.h"
 #include "stdlib.h"
 
+
+#define KeyPress 2
+#define ButtonPress 4
+#define DestroyNotify 17
+
+
+#define escape 53 
+#define plus 69 
+#define minus 78
+#define up 126
+#define down 125
+#define left 123
+#define right 124
+
 #define W 800 
 #define H 800
 
@@ -46,6 +60,8 @@ typedef struct s_fractal{
     t_img img ; 
 	double escape_value ; 
 	int iterations; 
+	double shift_x ; 
+	double shift_y; 
 }   t_fractal; 
 
 
@@ -55,6 +71,8 @@ void fractal_init(t_fractal *fractal);
 t_complex sum_complex(t_complex num_1 , t_complex num_2);
 t_complex square_complex(t_complex num);
 void handle_pixel(int x , int y , t_fractal *fractal); 
-void render(t_fractal *fractal); 
+void render(t_fractal *fractal);
+int key_handle(int keysym, t_fractal *fractal);
+void close_f(t_fractal *fractal); 
 
 #endif
