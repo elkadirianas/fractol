@@ -1,26 +1,52 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   event.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aelkadir <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/25 19:42:23 by aelkadir          #+#    #+#             */
+/*   Updated: 2025/01/25 19:42:46 by aelkadir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "fractol.h"
 
-void close_f(t_fractal *fractal){
-    mlx_destroy_image(fractal->mlx_connection, fractal->img.img_ptr); 
-    mlx_destroy_window(fractal->mlx_connection, fractal->mlx_window); 
-    exit(0); 
+int	close_f(void)
+{
+	exit(0);
+	return (0);
 }
 
-int key_handle(int keycode, t_fractal *fractal){
-    if(keycode==escape) 
-        close_f(fractal); 
-    else if(keycode==plus)
-        fractal->iterations+=10; 
-    else if(keycode==minus)
-        fractal->iterations-=10; 
-    else if(keycode==left)
-        fractal->shift_x+=0.5; 
-    else if(keycode==right)
-        fractal->shift_x -=0.5;
-    else if(keycode==up)
-        fractal->shift_y-=0.5; 
-    else if(keycode==down)
-        fractal->shift_y +=0.5; 
-    render(fractal); 
-    return 0 ; 
+int	key_handle(int keycode, t_fractal *fractal)
+{
+	if (keycode == ESCAPE)
+		close_f();
+	else if (keycode == PLUS)
+		fractal->iterations += 10;
+	else if (keycode == MINUS)
+		fractal->iterations -= 10;
+	else if (keycode == LEFT)
+		fractal->shift_x += (0.5 * fractal->zoom);
+	else if (keycode == RIGHT)
+		fractal->shift_x -= (0.5 * fractal->zoom);
+	else if (keycode == UP)
+		fractal->shift_y -= (0.5 * fractal->zoom);
+	else if (keycode == DOWN)
+		fractal->shift_y += (0.5 * fractal->zoom);
+	render(fractal);
+	return (0);
+}
+
+int	mouse_handle(int button, t_fractal *fractal)
+{
+	if (button == MOUSE_UP)
+	{
+		fractal->zoom *= 1.05;
+	}
+	else if (button == MOUSE_DOWN)
+	{
+		fractal->zoom *= 0.95;
+	}
+	render(fractal);
+	return (0);
 }
