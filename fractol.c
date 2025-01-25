@@ -12,16 +12,10 @@
 
 #include "fractol.h"
 
-void	f(void)
-{
-	system("leaks app");
-}
-
 int	main(int argc, char **argv)
 {
 	t_fractal	fractal;
 
-	atexit(f);
 	if (((argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10)) || (argc == 4
 				&& !ft_strncmp(argv[1], "julia", 5))))
 	{
