@@ -39,7 +39,6 @@ void	handle_pixel(int x, int y, t_fractal *fractal)
 	t_complex	z;
 	t_complex	c;
 	int			i;
-	int			color;
 
 	i = 0;
 	z.r = (scale(x, -2, 2, W) * fractal->zoom) + fractal->shift_x;
@@ -50,8 +49,7 @@ void	handle_pixel(int x, int y, t_fractal *fractal)
 		z = sum_complex(square_complex(z), c);
 		if (((z.r * z.r) + (z.i * z.i)) > fractal->escape_value)
 		{
-			color = 0x000F0000 * i;
-			my_pixel_put(x, y, &fractal->img, color);
+			my_pixel_put(x, y, &fractal->img, fractal->color * i );
 			return ;
 		}
 		i++;

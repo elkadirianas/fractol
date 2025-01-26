@@ -66,6 +66,7 @@ typedef struct s_fractal
 	double	zoom;
 	double	julia_x;
 	double	julia_y;
+    int     color; 
 }			t_fractal;
 size_t		ft_strlen(const char *s);
 double		ft_atodouble(char *str);
