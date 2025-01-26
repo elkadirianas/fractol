@@ -51,6 +51,8 @@ double	ft_atodouble(char *str)
 	res = 0;
 	power = 1;
 	signe = 1;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
 	if ((str[i] == '-' || str[i] == '+'))
 	{
 		if (str[i++] == '-')
@@ -58,7 +60,7 @@ double	ft_atodouble(char *str)
 	}
 	while (('0' <= str[i] && str[i] <= '9'))
 		res = res * 10 + (str[i++] - '0');
-	if (str[i] == '.' || str[i] == ',')
+	if (str[i] == '.')
 		i++;
 	while (('0' <= str[i] && str[i] <= '9'))
 	{
