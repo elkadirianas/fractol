@@ -12,34 +12,6 @@
 
 #include "fractol.h"
 
-size_t	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
-int	ft_strcmp(const char *s1, const char *s2)
-{
-	size_t	i;
-
-	i = 0;
-	while (s1[i] && s1[i] == s2[i])
-		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-}
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	if (!s || fd < 0)
-		return ;
-	while (*s)
-		write(fd, s++, 1);
-}
-
 double	ft_atodouble(char *str)
 {
 	int		i;
@@ -71,6 +43,38 @@ double	ft_atodouble(char *str)
 	return (res * signe);
 }
 
+int	is_empty(char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (i == ft_strlen(str))
+		return (1);
+	return (0);
+}
+
+int	check_char(char str)
+{
+	return ((str >= '0' && str <= '9') || str == '.' || str == '+' || str == '-'
+		|| str == ' ' || (str >= 9 && str <= 13));
+}
+
+int	contains_invalid(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!check_char(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int	is_valid(char *str)
 {
 	size_t	i;
@@ -93,7 +97,7 @@ int	is_valid(char *str)
 	}
 	while (('0' <= str[i] && str[i] <= '9'))
 		i++;
-	if (ft_strlen(str) != i || !ft_strcmp(str, "") || !ft_strcmp(str, "-")
+	if (!contains_invalid(str) || is_empty(str) || !ft_strcmp(str, "-")
 		|| !ft_strcmp(str, "+"))
 		return (0);
 	return (1);
