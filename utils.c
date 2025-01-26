@@ -71,7 +71,6 @@ double	ft_atodouble(char *str)
 
 int	is_valid(char *str)
 {
-	double	num;
 	size_t	i;
 
 	i = 0;
@@ -82,13 +81,18 @@ int	is_valid(char *str)
 	while (('0' <= str[i] && str[i] <= '9'))
 		i++;
 	if (str[i] == '.')
+	{
+		if (i == 0)
+			return (0);
+		if (!('0' <= str[i - 1] && str[i - 1] <= '9') || !('0' <= str[i + 1]
+				&& str[i + 1] <= '9'))
+			return (0);
 		i++;
+	}
 	while (('0' <= str[i] && str[i] <= '9'))
 		i++;
 	if (ft_strlen(str) != i || !ft_strcmp(str, "") || !ft_strcmp(str, "-")
-		|| !ft_strcmp(str, "-.") || !ft_strcmp(str, ".") || !ft_strcmp(str,
-			"+.") || !ft_strcmp(str, "+"))
+		|| !ft_strcmp(str, "+"))
 		return (0);
-	num = ft_atodouble(str);
 	return (1);
 }
