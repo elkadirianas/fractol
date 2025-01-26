@@ -37,16 +37,14 @@ int	key_handle(int keycode, t_fractal *fractal)
 	return (0);
 }
 
-int	mouse_handle(int button, t_fractal *fractal)
+int	mouse_handle(int button, int x, int y, t_fractal *fractal)
 {
+	x = 0;
+	y = 0;
 	if (button == MOUSE_UP)
-	{
 		fractal->zoom *= 1.05;
-	}
 	else if (button == MOUSE_DOWN)
-	{
 		fractal->zoom *= 0.95;
-	}
 	render(fractal);
-	return (0);
+	return (x + y);
 }
