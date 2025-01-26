@@ -8,7 +8,7 @@ MLX = -lmlx
 APPKIT = -framework AppKit
 OPENGL = -framework OpenGL
 
-SRC = fractol.c init.c utils.c render.c math_op.c event.c
+SRC = mandatory/fractol.c mandatory/init.c mandatory/utils.c mandatory/render.c mandatory/math_op.c mandatory/event.c
 
 
 OBJ = $(SRC:.c=.o)
