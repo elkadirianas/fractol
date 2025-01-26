@@ -25,6 +25,14 @@ int	key_handle(int keycode, t_fractal *fractal)
 		fractal->iterations += 10;
 	else if (keycode == MINUS)
 		fractal->iterations -= 10;
+	else if (keycode == LEFT)
+		fractal->shift_x += (0.5 * fractal->zoom);
+	else if (keycode == RIGHT)
+		fractal->shift_x -= (0.5 * fractal->zoom);
+	else if (keycode == UP)
+		fractal->shift_y -= (0.5 * fractal->zoom);
+	else if (keycode == DOWN)
+		fractal->shift_y += (0.5 * fractal->zoom);
 	render(fractal);
 	return (0);
 }

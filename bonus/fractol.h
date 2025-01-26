@@ -27,6 +27,10 @@
 # define ESCAPE 53
 # define PLUS 69
 # define MINUS 78
+# define UP 126
+# define DOWN 125
+# define LEFT 123
+# define RIGHT 124
 
 # define W 800
 # define H 800

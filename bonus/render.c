@@ -42,8 +42,8 @@ void	handle_pixel(int x, int y, t_fractal *fractal)
 	int			color;
 
 	i = 0;
-	z.r = (scale(x, -2, 2, W) * fractal->zoom);
-	z.i = -(scale(y, 2, -2, H) * fractal->zoom);
+	z.r = (scale(x, -2, 2, W) * fractal->zoom) + fractal->shift_x;
+	z.i = -(scale(y, 2, -2, H) * fractal->zoom) + fractal->shift_y;
 	m_j(&z, &c, fractal);
 	while (i < fractal->iterations)
 	{
