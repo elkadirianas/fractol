@@ -32,6 +32,9 @@
 # define LEFT 123
 # define RIGHT 124
 
+
+# define LEFT_MOUSE 1
+
 # define W 800
 # define H 800
 

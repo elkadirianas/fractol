@@ -17,6 +17,13 @@ int	close_f(void)
 	return (0);
 }
 
+static void change_color(t_fractal *fractal){
+	if(fractal->color==0x000F0000)
+		fractal->color=0x00FFBB00;
+	else
+		fractal->color=0x000F0000; 
+}
+
 int	key_handle(int keycode, t_fractal *fractal)
 {
 	if (keycode == ESCAPE)
@@ -33,9 +40,12 @@ int	key_handle(int keycode, t_fractal *fractal)
 		fractal->shift_y -= (0.5 * fractal->zoom);
 	else if (keycode == DOWN)
 		fractal->shift_y += (0.5 * fractal->zoom);
+		
 	render(fractal);
 	return (0);
 }
+
+
 
 int	mouse_handle(int button, int x, int y, t_fractal *fractal)
 {
@@ -45,6 +55,8 @@ int	mouse_handle(int button, int x, int y, t_fractal *fractal)
 		fractal->zoom *= 1.05;
 	else if (button == MOUSE_DOWN)
 		fractal->zoom *= 0.95;
+	else if (button == LEFT_MOUSE)
+		change_color(fractal); 
 	render(fractal);
 	return (x + y);
 }
