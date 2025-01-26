@@ -9,7 +9,7 @@
 /*   Updated: 2025/01/25 19:42:46 by aelkadir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "fractol.h"
+#include "fractol_bonus.h"
 
 int	close_f(void)
 {
