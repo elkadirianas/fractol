@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 		{
 			if (!is_valid(argv[2]) || !is_valid(argv[3]))
 			{
-				ft_putstr_fd("issa", 1);
+				ft_putstr_fd("wrong params, try julia c.i c.i", 1);
 				return (0);
 			}
 			fractal.julia_x = ft_atodouble(argv[2]);
@@ -36,6 +36,6 @@ int	main(int argc, char **argv)
 		printf("good");
 	}
 	else
-		ft_putstr_fd("issa", 1);
+		ft_putstr_fd("wrong params try mandelbrot or julia c.i c.i", 1);
 	return (0);
 }
