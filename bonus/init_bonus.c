@@ -19,7 +19,7 @@ static void	data_init(t_fractal *fractal)
 	fractal->shift_x = 0.0;
 	fractal->shift_y = 0.0;
 	fractal->zoom = 1.0;
-	fractal->color=0x000F0000; 
+	fractal->color = 0x000F0000;
 }
 
 static void	event_init(t_fractal *fractal)

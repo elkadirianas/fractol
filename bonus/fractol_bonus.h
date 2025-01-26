@@ -32,7 +32,6 @@
 # define LEFT 123
 # define RIGHT 124
 
-
 # define LEFT_MOUSE 1
 
 # define W 800
@@ -69,7 +68,7 @@ typedef struct s_fractal
 	double	zoom;
 	double	julia_x;
 	double	julia_y;
-    int     color; 
+	int		color;
 }			t_fractal;
 size_t		ft_strlen(const char *s);
 double		ft_atodouble(char *str);
@@ -80,6 +79,7 @@ double		scale(double number, double n_min, double n_max, double o_max);
 void		fractal_init(t_fractal *fractal);
 t_complex	sum_complex(t_complex num_1, t_complex num_2);
 t_complex	square_complex(t_complex num);
+t_complex	absolute_complex(t_complex z);
 void		handle_pixel(int x, int y, t_fractal *fractal);
 void		render(t_fractal *fractal);
 int			key_handle(int keysym, t_fractal *fractal);

@@ -16,8 +16,9 @@ int	main(int argc, char **argv)
 {
 	t_fractal	fractal;
 
-	if (((argc == 2 && !ft_strcmp(argv[1], "mandelbrot")) || (argc == 4
-				&& !ft_strcmp(argv[1], "julia"))))
+	if (((argc == 2 && (!ft_strcmp(argv[1], "mandelbrot") || !ft_strcmp(argv[1],
+						"burningship"))) || (argc == 4 && !ft_strcmp(argv[1],
+					"julia"))))
 	{
 		fractal.name = argv[1];
 		if (!ft_strcmp(fractal.name, "julia"))

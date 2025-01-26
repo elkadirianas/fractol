@@ -34,3 +34,16 @@ t_complex	square_complex(t_complex num)
 	result.i = 2 * num.r * num.i;
 	return (result);
 }
+
+t_complex	absolute_complex(t_complex z)
+{
+	t_complex	res;
+
+	res.r = z.r;
+	res.i = z.i;
+	if (res.r < 0)
+		res.r = -res.r;
+	if (res.i < 0)
+		res.i = -res.i;
+	return (res);
+}

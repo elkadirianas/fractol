@@ -20,7 +20,7 @@ static void	my_pixel_put(int x, int y, t_img *img, int color)
 	*(unsigned int *)(img->pixel + offset) = color;
 }
 
-static void	m_j(t_complex *z, t_complex *c, t_fractal *fractal)
+static void	m_j_b(t_complex *z, t_complex *c, t_fractal *fractal)
 {
 	if (!ft_strcmp(fractal->name, "julia"))
 	{
@@ -43,13 +43,16 @@ void	handle_pixel(int x, int y, t_fractal *fractal)
 	i = 0;
 	z.r = (scale(x, -2, 2, W) * fractal->zoom) + fractal->shift_x;
 	z.i = -(scale(y, 2, -2, H) * fractal->zoom) + fractal->shift_y;
-	m_j(&z, &c, fractal);
+	m_j_b(&z, &c, fractal);
 	while (i < fractal->iterations)
 	{
-		z = sum_complex(square_complex(z), c);
+		if (!ft_strcmp(fractal->name, "burningship"))
+			z = sum_complex(square_complex(absolute_complex(z)), c);
+		else
+			z = sum_complex(square_complex(z), c);
 		if (((z.r * z.r) + (z.i * z.i)) > fractal->escape_value)
 		{
-			my_pixel_put(x, y, &fractal->img, fractal->color * i );
+			my_pixel_put(x, y, &fractal->img, fractal->color * i);
 			return ;
 		}
 		i++;
