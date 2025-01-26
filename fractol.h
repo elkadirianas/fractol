@@ -68,8 +68,11 @@ typedef struct s_fractal
 	double	julia_x;
 	double	julia_y;
 }			t_fractal;
-
-int			ft_strncmp(const char *s1, const char *s2, size_t n);
+size_t		ft_strlen(const char *s);
+double		ft_atodouble(char *str);
+int			is_valid(char *str);
+void		ft_putstr_fd(char *s, int fd);
+int			ft_strcmp(const char *s1, const char *s2);
 double		scale(double number, double n_min, double n_max, double o_max);
 void		fractal_init(t_fractal *fractal);
 t_complex	sum_complex(t_complex num_1, t_complex num_2);

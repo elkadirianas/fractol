@@ -22,7 +22,7 @@ static void	my_pixel_put(int x, int y, t_img *img, int color)
 
 static void	m_j(t_complex *z, t_complex *c, t_fractal *fractal)
 {
-	if (!ft_strncmp(fractal->name, "julia", 5))
+	if (!ft_strcmp(fractal->name, "julia"))
 	{
 		c->r = fractal->julia_x;
 		c->i = fractal->julia_y;

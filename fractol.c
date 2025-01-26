@@ -16,14 +16,19 @@ int	main(int argc, char **argv)
 {
 	t_fractal	fractal;
 
-	if (((argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10)) || (argc == 4
-				&& !ft_strncmp(argv[1], "julia", 5))))
+	if (((argc == 2 && !ft_strcmp(argv[1], "mandelbrot")) || (argc == 4
+				&& !ft_strcmp(argv[1], "julia"))))
 	{
 		fractal.name = argv[1];
-		if (!ft_strncmp(fractal.name, "julia", 5))
+		if (!ft_strcmp(fractal.name, "julia"))
 		{
-			fractal.julia_x = atodbl(argv[2]);
-			fractal.julia_y = atodbl(argv[3]);
+			if (!is_valid(argv[2]) || !is_valid(argv[3]))
+			{
+				printf("issa");
+				return (0);
+			}
+			fractal.julia_x = ft_atodouble(argv[2]);
+			fractal.julia_y = ft_atodouble(argv[3]);
 		}
 		fractal_init(&fractal);
 		render(&fractal);
@@ -31,8 +36,6 @@ int	main(int argc, char **argv)
 		printf("good");
 	}
 	else
-	{
 		printf("issa hh");
-	}
 	return (0);
 }

@@ -12,44 +12,83 @@
 
 #include "fractol.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+size_t	ft_strlen(const char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
+int	ft_strcmp(const char *s1, const char *s2)
 {
 	size_t	i;
 
 	i = 0;
-	if (n == 0)
-		return (0);
-	while (s1[i] && s1[i] == s2[i] && i <= n)
+	while (s1[i] && s1[i] == s2[i])
 		i++;
-	if (i < n + 1)
-		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-	return (0);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
-double	atodbl(char *s)
+void	ft_putstr_fd(char *s, int fd)
 {
-	long	integer_part;
-	double	fractional_part;
-	double	pow;
-	int		sign;
-
-	integer_part = 0;
-	fractional_part = 0;
-	sign = +1;
-	pow = 1;
-	while ((*s >= 9 && *s <= 13) || 32 == *s)
-		++s;
-	while ('+' == *s || '-' == *s)
-		if ('-' == *s++)
-			sign = -sign;
-	while (*s != '.' && *s)
-		integer_part = (integer_part * 10) + (*s++ - 48);
-	if ('.' == *s)
-		++s;
+	if (!s || fd < 0)
+		return ;
 	while (*s)
+		write(fd, s++, 1);
+}
+
+double	ft_atodouble(char *str)
+{
+	int		i;
+	int		signe;
+	double	power;
+	double	res;
+
+	i = 0;
+	res = 0;
+	power = 1;
+	signe = 1;
+	if ((str[i] == '-' || str[i] == '+'))
 	{
-		pow /= 10;
-		fractional_part = fractional_part + (*s++ - 48) * pow;
+		if (str[i++] == '-')
+			signe = -1;
 	}
-	return ((integer_part + fractional_part) * sign);
+	while (('0' <= str[i] && str[i] <= '9'))
+		res = res * 10 + (str[i++] - '0');
+	if (str[i] == '.' || str[i] == ',')
+		i++;
+	while (('0' <= str[i] && str[i] <= '9'))
+	{
+		power = power / 10;
+		res = res + (str[i] - '0') * power;
+		i++;
+	}
+	return (res * signe);
+}
+
+int	is_valid(char *str)
+{
+	double	num;
+	size_t	i;
+
+	i = 0;
+	while ((9 <= str[i] && str[i] <= 13) || str[i] == 32)
+		i++;
+	if ((str[i] == '-' || str[i] == '+'))
+		i++;
+	while (('0' <= str[i] && str[i] <= '9'))
+		i++;
+	if (str[i] == '.')
+		i++;
+	while (('0' <= str[i] && str[i] <= '9'))
+		i++;
+	if (ft_strlen(str) != i || !ft_strcmp(str, "") || !ft_strcmp(str, "-")
+		|| !ft_strcmp(str, "-.") || !ft_strcmp(str, ".") || !ft_strcmp(str,
+			"+.") || !ft_strcmp(str, "+"))
+		return (0);
+	num = ft_atodouble(str);
+	return (1);
 }
