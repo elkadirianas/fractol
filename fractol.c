@@ -33,7 +33,6 @@ int	main(int argc, char **argv)
 		fractal_init(&fractal);
 		render(&fractal);
 		mlx_loop(fractal.mlx_connection);
-		printf("good");
 	}
 	else
 		ft_putstr_fd("wrong params try mandelbrot or julia c.i c.i", 1);
