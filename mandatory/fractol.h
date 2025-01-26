@@ -66,6 +66,7 @@ typedef struct s_fractal
 size_t		ft_strlen(const char *s);
 double		ft_atodouble(char *str);
 int			is_valid(char *str);
+int			is_empty(char *str);
 void		ft_putstr_fd(char *s, int fd);
 int			ft_strcmp(const char *s1, const char *s2);
 double		scale(double number, double n_min, double n_max, double o_max);
