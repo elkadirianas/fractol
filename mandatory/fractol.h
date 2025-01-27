@@ -32,7 +32,6 @@
 # define H 800
 
 # define BLACK 0x000000
-# define WHITE 0xFFFFFF
 
 typedef struct s_complex
 {
