@@ -60,3 +60,15 @@ int	double_signe_dots(char *str)
 	}
 	return (0);
 }
+
+int	is_empty(char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (i == ft_strlen(str))
+		return (1);
+	return (0);
+}
