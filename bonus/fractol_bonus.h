@@ -72,6 +72,7 @@ typedef struct s_fractal
 }			t_fractal;
 size_t		ft_strlen(const char *s);
 double		ft_atodouble(char *str);
+int			contains_sign(char *str);
 int			is_valid(char *str);
 int			is_empty(char *str);
 int			double_signe_dots(char *str);

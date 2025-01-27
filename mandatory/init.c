@@ -28,11 +28,21 @@ static void	event_init(t_fractal *fractal)
 	mlx_hook(fractal->mlx_window, DESTROYNOTIFY, 0, close_f, fractal);
 }
 
+static void	wrong_scale(int w, int h)
+{
+	if (h < 0 || w < 0 || h > 800 || w > 800)
+	{
+		ft_putstr_fd("wwwwoong scale", 1);
+		exit(1);
+	}
+}
+
 void	fractal_init(t_fractal *fractal)
 {
 	fractal->mlx_connection = mlx_init();
 	if (!fractal->mlx_connection)
 		exit(1);
+	wrong_scale(W, H);
 	fractal->mlx_window = mlx_new_window(fractal->mlx_connection, W, H,
 			fractal->name);
 	if (!fractal->mlx_window)
