@@ -20,7 +20,7 @@ int	close_f(void)
 static void	change_color(t_fractal *fractal)
 {
 	if (fractal->color == 0x000F0000)
-		fractal->color = 0x00FFBB00;
+		fractal->color = 0x0F00000F;
 	else
 		fractal->color = 0x000F0000;
 }
