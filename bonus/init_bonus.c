@@ -43,7 +43,7 @@ void	fractal_init(t_fractal *fractal)
 	fractal->mlx_connection = mlx_init();
 	if (!fractal->mlx_connection)
 		exit(1);
-	wrong_scale(int W, int H);
+	wrong_scale(W, H);
 	fractal->mlx_window = mlx_new_window(fractal->mlx_connection, W, H,
 			fractal->name);
 	if (!fractal->mlx_window)
