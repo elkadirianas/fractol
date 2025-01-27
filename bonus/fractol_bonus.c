@@ -36,6 +36,6 @@ int	main(int argc, char **argv)
 		mlx_loop(fractal.mlx_connection);
 	}
 	else
-		ft_putstr_fd("wrong params try mandelbrot or julia c.i c.i", 1);
+		ft_putstr_fd("wrong params try mandelbrot,burningship or julia c.i c.i", 1);
 	return (0);
 }
