@@ -12,47 +12,50 @@
 
 #include "fractol_bonus.h"
 
+static double	parse_decimal(char *str, int *i)
+{
+	double	res;
+	double	power;
+
+	res = 0;
+	power = 1;
+	if (str[*i] == '.')
+	{
+		(*i)++;
+		while ('0' <= str[*i] && str[*i] <= '9')
+		{
+			power /= 10;
+			res += (str[*i] - '0') * power;
+			(*i)++;
+		}
+	}
+	return (res);
+}
+
 double	ft_atodouble(char *str)
 {
 	int		i;
 	int		signe;
-	double	power;
 	double	res;
 
 	i = 0;
 	res = 0;
-	power = 1;
 	signe = 1;
 	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
-	if ((str[i] == '-' || str[i] == '+'))
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if (str[i++] == '-')
+		if (str[i] == '-')
 			signe = -1;
-	}
-	while (('0' <= str[i] && str[i] <= '9'))
-		res = res * 10 + (str[i++] - '0');
-	if (str[i] == '.')
 		i++;
-	while (('0' <= str[i] && str[i] <= '9'))
+	}
+	while ('0' <= str[i] && str[i] <= '9')
 	{
-		power = power / 10;
-		res = res + (str[i] - '0') * power;
+		res = res * 10 + (str[i] - '0');
 		i++;
 	}
+	res += parse_decimal(str, &i);
 	return (res * signe);
-}
-
-int	is_empty(char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (i == ft_strlen(str))
-		return (1);
-	return (0);
 }
 
 int	check_char(char str)
