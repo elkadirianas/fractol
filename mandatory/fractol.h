@@ -69,7 +69,7 @@ int			is_valid(char *str);
 int			is_empty(char *str);
 void		ft_putstr_fd(char *s, int fd);
 int			ft_strcmp(const char *s1, const char *s2);
-int			double_signe(char *str);
+int			double_signe_dots(char *str);
 double		scale(double number, double n_min, double n_max, double o_max);
 void		fractal_init(t_fractal *fractal);
 t_complex	sum_complex(t_complex num_1, t_complex num_2);

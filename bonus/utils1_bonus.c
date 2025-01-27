@@ -39,18 +39,22 @@ void	ft_putstr_fd(char *s, int fd)
 		write(fd, s++, 1);
 }
 
-int	double_signe(char *str)
+int	double_signe_dots(char *str)
 {
 	int	i;
-	int	count;
+	int	count_s;
+	int	count_d;
 
 	i = 0;
-	count = 0;
+	count_s = 0;
+	count_d = 0;
 	while (str[i])
 	{
 		if (str[i] == '+' || str[i] == '-')
-			count++;
-		if (count > 1)
+			count_s++;
+		if (str[i] == '.')
+			count_d++;
+		if (count_d > 1 || count_s > 1)
 			return (1);
 		i++;
 	}

@@ -97,7 +97,7 @@ int	is_valid(char *str)
 	}
 	while (('0' <= str[i] && str[i] <= '9'))
 		i++;
-	if (double_signe(str) || !contains_invalid(str) || is_empty(str)
+	if (double_signe_dots(str) || !contains_invalid(str) || is_empty(str)
 		|| !ft_strcmp(str, "-") || !ft_strcmp(str, "+"))
 		return (0);
 	return (1);
