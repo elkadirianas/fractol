@@ -10,7 +10,7 @@ APPKIT = -framework AppKit
 OPENGL = -framework OpenGL
 
 SRC = mandatory/event.c   mandatory/fractol.c  mandatory/init.c    mandatory/math_op.c mandatory/render.c  mandatory/utils.c mandatory/utils1.c
-SRC_BONUS = bonus/event_bonus.c   bonus/fractol_bonus.c  bonus/init_bonus.c    bonus/math_op_bonus.c bonus/render_bonus.c  bonus/utils_bonus.c
+SRC_BONUS = bonus/event_bonus.c   bonus/fractol_bonus.c  bonus/init_bonus.c    bonus/math_op_bonus.c bonus/render_bonus.c  bonus/utils_bonus.c bonus/utils1_bonus.c
 
 OBJ = $(SRC:.c=.o)
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
